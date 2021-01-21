@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  service1:
+    build: ./service1
+    ports:
+      - 8080:8080
+    environment:
+      - RABBIT_URI=amqp://guest:guest@rabbitmq:5672/
+
+  service2:
+    build: ./service2
+    environment:
+      - RABBIT_URI=amqp://guest:guest@rabbitmq:5672/
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - 5672:5672
+      - 15672:15672
