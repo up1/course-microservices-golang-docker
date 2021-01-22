@@ -3,8 +3,12 @@ package demo
 import (
 	"demo/beer"
 
+	_ "demo/docs"
+
 	"github.com/gin-gonic/gin"
 	"github.com/penglongli/gin-metrics/ginmetrics"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func StartServer() {
@@ -23,6 +27,9 @@ func StartServer() {
 	m.SetDuration([]float64{0.1, 0.3, 1.2, 5, 10})
 	// set middleware for gin
 	m.Use(r)
+
+	// Docs
+	r.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	beer.NewRoutes(r)
 
