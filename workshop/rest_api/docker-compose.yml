@@ -5,3 +5,5 @@ services:
     image: xyz:1.0.0
     ports:
       - 8888:8080
+  db:
+    image: mongo:3.6.21-xenial
