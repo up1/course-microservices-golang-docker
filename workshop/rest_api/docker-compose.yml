@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  api:
+    build: ./
+    image: xyz:1.0.0
+    ports:
+      - 8888:8080
